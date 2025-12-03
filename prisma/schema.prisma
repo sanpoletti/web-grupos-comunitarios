@@ -1,0 +1,1569 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model AcumuladoAgosto {
+  N__de_orden_                Float?    @map("Nº de orden ")
+  Nombre                      String?   @db.NVarChar(255)
+  Apellido                    String?   @db.NVarChar(255)
+  Parentesco                  String?   @db.NVarChar(255)
+  Sexo                        String?   @db.NVarChar(255)
+  Tipo_de_Doc                 String?   @map("Tipo de Doc") @db.NVarChar(255)
+  NRO_DOCUMENTO               Float?    @map("NRO DOCUMENTO")
+  Lugar_de_Nacimiento         String?   @map("Lugar de Nacimiento") @db.NVarChar(255)
+  FechadeNacimiento           DateTime? @db.DateTime
+  Telefono                    Float?
+  Domicilio                   String?   @db.NVarChar(255)
+  Barrio                      String?   @db.NVarChar(255)
+  Barrio_Popular              String?   @map("Barrio Popular") @db.NVarChar(255)
+  Fecha_Entrega               DateTime? @map("Fecha Entrega") @db.DateTime
+  Nobre_del_grupo_comunitario String?   @map("Nobre del grupo comunitario") @db.NVarChar(255)
+  Nro_registro                Float?    @map("Nro registro")
+  Comuna                      Float?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model acumuladoJulio {
+  ID                           Float?
+  Nombre                       String?   @db.NVarChar(255)
+  Apellido                     String?   @db.NVarChar(255)
+  Parentesco                   String?   @db.NVarChar(255)
+  Sexo                         String?   @db.NVarChar(255)
+  Tipo_de_Doc                  String?   @map("Tipo de Doc") @db.NVarChar(255)
+  N__de_documento              Float?    @map("Nº de documento")
+  Lugar_de_Nacimiento          String?   @map("Lugar de Nacimiento") @db.NVarChar(255)
+  Fecha_de_Nacimiento          DateTime? @map("Fecha de Nacimiento") @db.DateTime
+  Telefonodecontacto           Float?
+  Domicilio                    String?   @db.NVarChar(255)
+  Barrio                       String?   @db.NVarChar(255)
+  Barrio_popular               Float?    @map("Barrio popular")
+  FechaEntregaPlanilla         DateTime? @db.DateTime
+  Nombre_del_grupo_comunitario String?   @map("Nombre del grupo comunitario") @db.NVarChar(255)
+  N__registro                  Float?    @map("N° registro")
+  Comuna                       Float?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model altas_aceptadas {
+  adm        Float?
+  ident_arch String?   @map("ident arch") @db.NVarChar(255)
+  f_envio    DateTime? @db.DateTime
+  f_alta     DateTime? @db.DateTime
+  ape_nom    String?   @db.NVarChar(255)
+  tdoc       String?   @db.NVarChar(255)
+  ndoc       Float?
+  cta        String?   @db.NVarChar(15)
+  tarje      String?   @db.NVarChar(16)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Anexo2409_total {
+  nro_orden      BigInt?
+  nombregrupo    String   @db.VarChar(300)
+  nroregistro    Int?
+  nombre         String?  @db.VarChar(50)
+  apellido       String?  @db.VarChar(70)
+  nro_doc        Decimal? @db.Decimal(11, 0)
+  montoordinario Decimal  @db.Decimal(10, 2)
+  montoservicios Decimal  @db.Decimal(10, 2)
+  montototal     Decimal? @db.Decimal(11, 2)
+  numerorib      Decimal? @db.Decimal(18, 0)
+  aniorib        Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model AnexoGC_Noviembre23 {
+  nro_orden    Float?
+  grupo        String? @db.NVarChar(255)
+  nro_registro Float?
+  nombre       String? @db.NVarChar(255)
+  apellido     String? @db.NVarChar(255)
+  nro_doc      Float?
+  Monto_Lote1  Float?
+  Monto_lote2  Float?
+  Monto_total  Float?
+  Expediente   String? @db.NVarChar(255)
+  F11          String? @db.NVarChar(255)
+  F12          String? @db.NVarChar(255)
+  F13          String? @db.NVarChar(255)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model AnexoGC_Noviembre23_conRib {
+  nro_orden    Float?
+  grupo        String? @db.NVarChar(255)
+  nro_registro Float?
+  nombre       String? @db.NVarChar(255)
+  apellido     String? @db.NVarChar(255)
+  nro_doc      Float?
+  Monto_Lote1  Float?
+  Monto_lote2  Float?
+  Monto_total  Float?
+  Expediente   String? @db.NVarChar(255)
+  F11          String? @db.NVarChar(255)
+  F12          String? @db.NVarChar(255)
+  F13          String? @db.NVarChar(255)
+  nrorib       Float?
+  aniorib      Float?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model AnexoOrdinario {
+  Nro_de_orden      Float?  @map("Nro de orden")
+  grupo_comunitario String? @db.NVarChar(255)
+  nro_registro      Float?
+  monto_ordinario   Float?  @db.Money
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model AnexoServiciosParaComparar {
+  nro_orden         Float?
+  grupo_comunitario String? @db.NVarChar(255)
+  nro_registro      Float?
+  nombre            String? @db.NVarChar(255)
+  apellido          String? @db.NVarChar(255)
+  NRO_DOC           Float?
+  monto_servicios   Float?  @db.Money
+  CodigoExpediente  String? @db.NVarChar(255)
+  F9                String? @db.NVarChar(255)
+
+  @@ignore
+}
+
+model bancos {
+  idbanco       Int @id(map: "PK_bancos") @default(autoincrement())
+  numeroentidad Int
+}
+
+model Barrios {
+  idbarrio    Int    @id(map: "PK_Barrios") @default(autoincrement())
+  idcomuna    Int
+  Descripcion String @db.VarChar(30)
+
+  @@index([idcomuna], map: "ix_idcomuna_NC")
+}
+
+model barrios_no_oficiales {
+  idbarrionooficial Int     @id(map: "PK_barrios_no_oficiales") @default(autoincrement())
+  idbarrio          Int?
+  descripcion       String? @db.VarChar(50)
+  TipoBarrio        String? @db.VarChar(50)
+
+  @@index([idbarrio], map: "ix_idbarrioNo_")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Beneficiarios_grupos_Mayo24 {
+  nro_orden         Float?
+  grupo_comunitario String? @db.NVarChar(255)
+  reg               Float?
+  nombre            String? @db.NVarChar(255)
+  apellido          String? @db.NVarChar(255)
+  NRO_DOC           Float?
+  Lote1             Float?  @db.Money
+  Lote2             Float?  @db.Money
+  CodigoExpediente  String? @db.NVarChar(255)
+  F10               String? @db.NVarChar(255)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Calificacion_aud {
+  idhogar            Int
+  NUMEROCALIFICACION Int?
+  fecha              DateTime @db.DateTime
+
+  @@index([idhogar], map: "IX_Calificacion_aud", clustered: true)
+  @@index([fecha], map: "IX_Calificacion_aud_1")
+  @@ignore
+}
+
+model calificaciones {
+  numerocalificacion Int    @id(map: "PK_calificaciones") @default(autoincrement())
+  descripcion        String @db.VarChar(30)
+}
+
+model calles {
+  IdCalle Int     @id(map: "PK_calles")
+  calle   String? @db.VarChar(50)
+}
+
+model CambioDeTitularidad {
+  idcambiotitular   Int       @id(clustered: false, map: "PK_CambioDeTitularidad") @default(autoincrement())
+  idHogar           Int
+  idpersonahogar    Int?      @unique(map: "IX_CambioDeTitularidad", clustered: true)
+  idpersonahogarnew Int?
+  CONFIRMADO        DateTime? @db.DateTime
+  fecha             DateTime  @default(now(), map: "DF_CambioDeTitularidad_fecha") @db.DateTime
+  nrotitular        Int
+  usuario           String    @default("suser_sname()", map: "DF_CambioDeTitularidad_usuario") @db.VarChar(240)
+  IDCATEGORIA       Int?
+  resolucion        String?   @db.VarChar(100)
+  idclasificacion   Int?
+  idresolusion      Int?
+
+  @@index([idpersonahogarnew], map: "IX_CambioDeTitularidad_1")
+  @@index([idHogar], map: "IX_CambioDeTitularidad_2")
+}
+
+model cambiosdedocumentos {
+  idcambio        Int      @id(map: "PK_cambiosdedocumentos") @default(autoincrement())
+  NUMPERSONA      Int
+  NRO_DOC         Decimal  @db.Decimal(10, 0)
+  IDTIPODOCUMENTO Int      @db.TinyInt
+  usuario         String   @default("suser_sname()", map: "DF_cambiosdedocumentos_usuario") @db.VarChar(30)
+  fecha           DateTime @default(now(), map: "DF_cambiosdedocumentos_fecha") @db.DateTime
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model CartaCompromiso_Aud {
+  idhogar         Int
+  cartacompromiso DateTime? @db.DateTime
+  fecha           DateTime? @db.DateTime
+  usuario         String?   @db.NVarChar(50)
+
+  @@ignore
+}
+
+model Categoria {
+  IdCategoria  Int       @id(map: "PK_Categoria") @default(autoincrement())
+  DesCripcion  String    @db.VarChar(50)
+  MONTOACOBRAR Float     @default(0, map: "DF_Categoria_MONTOACOBRAR") @db.Money
+  VIGENCIA     DateTime? @db.DateTime
+  Origen       Int       @db.TinyInt
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model categorias_aud {
+  idhogar     Int
+  idcategoria Int
+  fecha       DateTime @db.DateTime
+  usuario     String?  @default("suser_sname()", map: "DF_categorias_aud_usuario") @db.VarChar(150)
+
+  @@ignore
+}
+
+model Comunas {
+  idcomuna    Int     @id(map: "PK_Comunas")
+  descripcion String? @db.VarChar(50)
+}
+
+model Cuentas {
+  IdCuenta       Int       @id(map: "PK_Cuentas") @default(autoincrement())
+  NumeroDeCuenta String    @db.VarChar(16)
+  FechaAlta      DateTime  @default(now(), map: "DF_Cuentas_FechaAlta") @db.DateTime
+  FechaSolicitud DateTime? @db.DateTime
+  fechaApertura  DateTime? @db.DateTime
+  FBajaMotivo    DateTime? @db.DateTime
+  idbanco        Int?
+  idpersonahogar Int
+  Activa         Boolean   @default(false, map: "DF_Cuentas_Activa")
+  sucursal       Int?
+  numpersona     Int?
+  idtipo         Int?
+  cbu            String?   @db.VarChar(50)
+
+  @@index([idpersonahogar], map: "IX_Cuentas")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Cuentas_Aud {
+  IdCuenta       Int
+  NumeroDeCuenta String    @db.VarChar(16)
+  FechaAlta      DateTime  @db.DateTime
+  FechaSolicitud DateTime? @db.DateTime
+  fechaApertura  DateTime? @db.DateTime
+  FBajaMotivo    DateTime? @db.DateTime
+  idbanco        Int?
+  idpersonahogar Int
+  Activa         Boolean
+  sucursal       Int?
+  numpersona     Int?
+  idtipo         Int?
+  UsuarioMod     String?   @db.VarChar(50)
+  FechaAud       DateTime? @db.DateTime
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Cuil_aud {
+  numpersona Int
+  cuil       Decimal   @db.Decimal(18, 0)
+  fecha      DateTime? @db.DateTime
+  usuario    String?   @default("suser_sname()", map: "DF_Cuil_aud_usuario") @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito1erSemestre_final_ordinario {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  NRO_DOC     Decimal? @db.Decimal(11, 0)
+  monto       Decimal? @db.Decimal(10, 2)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2312_final_ordinario {
+  nro_orden         Float?
+  Grupo_comunitario String?  @db.NVarChar(255)
+  nro_registro      Float?
+  Nombre            String?  @db.NVarChar(255)
+  Apellido          String?  @db.NVarChar(255)
+  nro_doc           Float?
+  Monto_lote1       Float?
+  Monto_lote2       Float?
+  Monto_total       Float?
+  Expediente        String?  @db.NVarChar(255)
+  anioRib           Decimal? @db.Decimal(18, 0)
+  nrorib            Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2405_final_gas {
+  grupo_comunitario String   @db.VarChar(300)
+  nroregistro       Int?
+  nombre            String?  @db.VarChar(50)
+  apellido          String?  @db.VarChar(70)
+  nro_doc           Decimal? @db.Decimal(11, 0)
+  monto             Float?   @db.Money
+  numerorib         Decimal? @db.Decimal(18, 0)
+  aniorib           Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2405_final_ordinario_1 {
+  grupo_comunitario String   @db.VarChar(300)
+  nro_registro      Int?
+  nombre            String?  @db.VarChar(50)
+  apellido          String?  @db.VarChar(70)
+  nro_doc           Decimal? @db.Decimal(11, 0)
+  monto             Float?   @db.Money
+  numerorib         Decimal? @db.Decimal(18, 0)
+  aniorib           Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2405_final_ordinario_2 {
+  grupo_comunitario String   @db.VarChar(300)
+  nro_registro      Int?
+  nombre            String?  @db.VarChar(50)
+  apellido          String?  @db.VarChar(70)
+  nro_doc           Decimal? @db.Decimal(11, 0)
+  monto             Float?   @db.Money
+  numerorib         Decimal? @db.Decimal(18, 0)
+  aniorib           Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2408_final_servicios_ant {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  NRO_DOC     Decimal? @db.Decimal(11, 0)
+  monto       Decimal? @db.Decimal(10, 2)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2409_final_ordinario {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  NRO_DOC     Decimal? @db.Decimal(11, 0)
+  monto       Decimal? @db.Decimal(10, 2)
+  numerorib   Decimal? @db.Decimal(18, 0)
+  anioRib     Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2409_final_servicios {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  NRO_DOC     Decimal? @db.Decimal(11, 0)
+  monto       Decimal? @db.Decimal(10, 2)
+  numerorib   Decimal? @db.Decimal(18, 0)
+  anioRib     Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2412_final_ordinario {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  NRO_DOC     Decimal? @db.Decimal(11, 0)
+  monto       Decimal? @db.Decimal(10, 2)
+  numerorib   Decimal? @db.Decimal(18, 0)
+  anioRib     Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2412_final_ordinario_3Casos {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  NRO_DOC     Decimal? @db.Decimal(11, 0)
+  monto       Decimal? @db.Decimal(10, 2)
+  numerorib   Decimal? @db.Decimal(18, 0)
+  aniorib     Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2412_final_ordinario_7casos {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  NRO_DOC     Decimal? @db.Decimal(11, 0)
+  monto       Decimal? @db.Decimal(10, 2)
+  numerorib   Decimal? @db.Decimal(18, 0)
+  anioRib     Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2504_final_servicios {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  nro_doc     Decimal? @db.Decimal(11, 0)
+  Monto       Decimal? @db.Decimal(10, 2)
+  numerorib   Decimal? @db.Decimal(18, 0)
+  aniorib     Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2506_final_ordinario {
+  nro_orden   BigInt?
+  nroregistro Int?
+  nombreGrupo String   @db.VarChar(300)
+  nro_doc     Decimal? @db.Decimal(11, 0)
+  apellido    String?  @db.VarChar(70)
+  nombre      String?  @db.VarChar(50)
+  Monto       Decimal? @db.Decimal(10, 2)
+  numerorib   Decimal? @db.Decimal(18, 0)
+  aniorib     Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Deposito2509_final_servicios {
+  nro_orden   BigInt?
+  nombreGrupo String   @db.VarChar(300)
+  nroregistro Int?
+  nombre      String?  @db.VarChar(50)
+  apellido    String?  @db.VarChar(70)
+  NRO_DOC     Decimal? @db.Decimal(11, 0)
+  monto       Decimal? @db.Decimal(10, 2)
+  numerorib   Decimal? @db.Decimal(18, 0)
+  aniorib     Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+model DETALLE_CUENTAS {
+  IDDETALLE        Int       @id(map: "PK_DETALLE_CUENTAS") @default(autoincrement())
+  IDGENERACION     Int
+  IdPersonaHogar   Int
+  FECHA_RESOLUCION DateTime? @db.DateTime
+  numpersona       Int?
+}
+
+model DETALLE_tarjetas {
+  IDDETALLE        Int       @id(map: "PK_DETALLE_tarjetas") @default(autoincrement())
+  IDGENERACION     Int
+  FECHA_RESOLUCION DateTime? @db.DateTime
+  numpersona       Int?
+  IdPersonaHogar   Int?
+  idrenovacion     Int
+}
+
+model Domicilios {
+  IdTdomicilio         Int
+  IdDomicilio          Int       @id(map: "PK_Domicilios") @default(autoincrement())
+  CALLE                String?   @db.VarChar(80)
+  IDCALLE              Int?
+  numero               String?   @db.VarChar(5)
+  numerodeBloque       String?   @db.VarChar(6)
+  piso                 String?   @db.VarChar(4)
+  departamento         String?   @db.VarChar(4)
+  Habitacion           String?   @db.VarChar(6)
+  Parador_Hogar        String?   @db.VarChar(100)
+  fecha                DateTime? @default(now(), map: "DF_Domicilios_fecha") @db.DateTime
+  barrio               String?   @db.VarChar(50)
+  manzana              String?   @db.VarChar(10)
+  c_postal             Int?      @db.SmallInt
+  nro_casa             String?   @db.VarChar(10)
+  escalera             Int?
+  villa                Int?
+  observaciondomicilio String?   @db.VarChar(1000)
+  barrionooficial      String?   @db.VarChar(50)
+  origen               Int?      @default(1, map: "DF_Domicilios_origen") @db.TinyInt
+  Entidadhogar         Int?
+  EntidadParador       Int?
+  usuario              String?   @default("suser_sname()", map: "DF_Domicilios_usuario") @db.VarChar(50)
+  idlocalidad          Int?
+
+  @@index([Entidadhogar], map: "ix_entidadhogar_NC")
+  @@index([EntidadParador], map: "ix_entidadparador_NC")
+  @@index([IDCALLE], map: "ix_idcalle_NC")
+  @@index([idlocalidad], map: "ix_idlocalidad_NC")
+  @@index([villa], map: "ix_villa_NC")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model domicilios_aud {
+  iddomicilio          Int
+  observacionDomicilio String?   @db.VarChar(1000)
+  IdTdomicilio         Int
+  CALLE                String?   @db.VarChar(80)
+  IDCALLE              Int?
+  numero               String?   @db.VarChar(5)
+  numerodeBloque       String?   @db.VarChar(6)
+  piso                 String?   @db.VarChar(4)
+  departamento         String?   @db.VarChar(4)
+  Habitacion           String?   @db.VarChar(6)
+  Parador_Hogar        String?   @db.VarChar(100)
+  fecha                DateTime? @db.DateTime
+  barrio               String?   @db.VarChar(50)
+  manzana              String?   @db.VarChar(10)
+  c_postal             Int?      @db.SmallInt
+  nro_casa             String?   @db.VarChar(10)
+  escalera             Int?
+  villa                Int?
+  barrionooficial      String?   @db.VarChar(50)
+  fecha_aud            DateTime  @default(now(), map: "DF_domicilios_aud_fecha_aud") @db.DateTime
+  origen               Int       @db.TinyInt
+  clave                Int
+  Entidadhogar         Int?
+  EntidadParador       Int?
+  usuarioMod           String?   @default("suser_sname()", map: "DF_domicilios_aud_usuarioMod") @db.VarChar(50)
+  idlocalidad          Int?
+
+  @@ignore
+}
+
+model Domicilios_Declarados {
+  IdPersonahogar       Int
+  IdTDomicilio         Int
+  IdDomicilio          Int       @id(map: "PK_Domicilios_Declarados") @default(autoincrement())
+  CALLE                String?   @db.VarChar(80)
+  IDCALLE              Int?
+  numero               String?   @db.VarChar(5)
+  numerodeBloque       String?   @db.VarChar(6)
+  piso                 String?   @db.VarChar(4)
+  departamento         String?   @db.VarChar(4)
+  Habitacion           String?   @db.VarChar(6)
+  Parador_Hogar        String?   @db.VarChar(100)
+  fecha                DateTime? @default(now(), map: "DF_Domicilios_fecha_declarados") @db.DateTime
+  barrio               String?   @db.VarChar(50)
+  manzana              String?   @db.VarChar(10)
+  c_postal             Int?      @db.SmallInt
+  nro_casa             String?   @db.VarChar(10)
+  escalera             Int?
+  villa                Int?
+  observaciondomicilio String?   @db.VarChar(1000)
+  barrionooficial      String?   @db.VarChar(50)
+  Entidadhogar         Int?
+  EntidadParador       Int?
+}
+
+model Encuestas {
+  idEncuesta        Int       @default(autoincrement())
+  NUMPERSONA        Int
+  tieneDoc          Int?      @db.TinyInt
+  tuvoDoc           Int?      @db.TinyInt
+  cualDoc           Int?      @db.TinyInt
+  nroDoc            Decimal?  @db.Decimal(11, 0)
+  fechaDeNacimiento DateTime? @db.DateTime
+  edad              Int?      @db.TinyInt
+  domicilioEnCaba   Int?      @db.TinyInt
+  localidadDoc      Int?
+  otraLocalidad     Int?
+  dondeReside       Int?      @db.TinyInt
+  actualmenteVive   Int?      @db.TinyInt
+  tenenciaVivenda   Int?      @db.TinyInt
+  otraTenencia      String?   @db.VarChar(50)
+  direccioncompleta String?   @db.NChar(10)
+  genero            Int?      @db.TinyInt
+  cantPerVivenHogar Int?      @db.TinyInt
+  motivos3A         Int?      @db.TinyInt
+  motivos3B         Int?      @db.TinyInt
+  motivos3C         Int?      @db.TinyInt
+  motivos3D         Int?      @db.TinyInt
+  motivos3E         Int?      @db.TinyInt
+  motivos3F         Int?      @db.TinyInt
+  motivos3G         Int?      @db.TinyInt
+  motivos3H         Int?      @db.TinyInt
+  motivos3I         Int?      @db.TinyInt
+  retiro4A          Int?      @db.TinyInt
+  idcomedor         Int?
+  retiro4B          Int?      @db.TinyInt
+  retiro4C          Int?      @db.TinyInt
+  retiro4D          Int?      @db.TinyInt
+  retiro4E          Int?      @db.TinyInt
+
+  @@id([idEncuesta, NUMPERSONA], map: "PK_Encuestas")
+}
+
+model Entidades {
+  IdTEntidad        Int
+  numeroentidad     Int      @id(map: "PK_Entidades") @default(autoincrement())
+  razonsocial       String   @default(" ", map: "DF_Entidades_razonsocial") @db.VarChar(200)
+  abreviatura       String   @default("", map: "DF_Entidades_abreviatura") @db.VarChar(50)
+  Cuit              Decimal? @default(0, map: "DF_Entidades_Cuit") @db.Decimal(11, 0)
+  Calle             String?  @default("", map: "DF_Entidades_Calle") @db.VarChar(50)
+  Numero            String?  @default("0", map: "DF_Entidades_Numero") @db.VarChar(4)
+  PISO              String?  @default("", map: "DF_Entidades_PISO") @db.VarChar(4)
+  DEPARTAMENTO      String?  @default("", map: "DF_Entidades_DEPARTAMENTO") @db.VarChar(4)
+  IDLOCALIDAD       Int?     @default(0, map: "DF_Entidades_IDLOCALIDAD") @db.SmallInt
+  C_POSTAL          Int?     @default(0, map: "DF_Entidades_C_POSTAL") @db.SmallInt
+  email             String?  @default("", map: "DF_Entidades_email") @db.VarChar(100)
+  telefono          String?  @default("", map: "DF_Entidades_telefono") @db.VarChar(20)
+  path_logo         String?  @default("", map: "DF_Entidades_path_logo") @db.VarChar(50)
+  TELEFONOMOVIL     String?  @default("", map: "DF_Entidades_TELEFONOMOVIL") @db.VarChar(20)
+  IdProvincia       Int?     @db.SmallInt
+  idbarrio          Int?
+  usuario           String?  @default("suser_sname()", map: "DF_Entidades_usuario") @db.VarChar(50)
+  idvilla           Int?
+  idbarrionooficial Int?
+}
+
+model EntidadesHogares {
+  numeroentidad  Int     @id(map: "PK_EntidadesHogares")
+  nroinstitucion Int?    @db.SmallInt
+  observaciones  String? @db.VarChar(100)
+
+  @@index([nroinstitucion], map: "ix_nroinstitucion_NC")
+}
+
+model EntidadesOrganizaciones {
+  numeroentidad          Int                      @id(map: "PK_EntidadesOrganizaciones")
+  nroOrganizacion        Int?                     @db.SmallInt
+  observaciones          String?                  @db.VarChar(100)
+  idresponsable          Int?
+  HogarOrganizacionGrupo HogarOrganizacionGrupo[]
+}
+
+model EntidadesParadores {
+  numeroentidad  Int     @id(map: "PK_EntidadesParadores")
+  nroinstitucion Int?    @db.SmallInt
+  observaciones  String? @db.VarChar(100)
+
+  @@index([nroinstitucion], map: "ix_nroinstitucion_2_NC")
+}
+
+model Estado_renovacion {
+  idestadorenovacion Int    @id(map: "PK_Estado_renovacion") @default(autoincrement())
+  descripcion        String @db.VarChar(80)
+}
+
+model EstadosGrupos {
+  idestadoGrupo Int     @id(map: "PK_EstadosGrupos") @default(autoincrement())
+  descripcion   String  @db.VarChar(50)
+  Hogar         Hogar[]
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Gas_grupos_Mayo24 {
+  nro_orden         Float?
+  grupo_comunitario String? @db.NVarChar(255)
+  reg               Float?
+  nombre            String? @db.NVarChar(255)
+  apellido          String? @db.NVarChar(255)
+  NRO_DOC           Float?
+  monto_trimestral  Float?  @db.Money
+  CodigoExpediente  String? @db.NVarChar(255)
+  F9                String? @db.NVarChar(255)
+
+  @@ignore
+}
+
+model GENERAR_CUENTAS {
+  IDGENERACION     Int       @id(map: "PK_GENERAR_CUENTAS") @default(autoincrement())
+  FECHA_GENERACION DateTime  @db.DateTime
+  FECHA_IMPRESION  DateTime? @db.DateTime
+  FECHA_ENVIO      DateTime? @db.DateTime
+  IDUBICACION      Int?
+  FECHA_RECEPCION  DateTime? @db.DateTime
+  usuario          String?   @default("suser_sname()", map: "DF_GENERAR_CUENTAS_usuario") @db.VarChar(50)
+  tgeneracion      Int       @default(1, map: "DF_GENERAR_CUENTAS_tgeneracion") @db.TinyInt
+}
+
+model GENERAR_tarjetas {
+  IDGENERACION     Int       @id(map: "PK_GENERAR_tarjeTAS") @default(autoincrement())
+  FECHA_GENERACION DateTime  @db.DateTime
+  FECHA_IMPRESION  DateTime? @db.DateTime
+  FECHA_ENVIO      DateTime? @db.DateTime
+  IDUBICACION      Int?
+  FECHA_RECEPCION  DateTime? @db.DateTime
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model grupos_comunitarios {
+  nombre           String?   @db.NVarChar(255)
+  apellido         String?   @db.NVarChar(255)
+  sexo             String?   @db.NVarChar(255)
+  tipo_doc         String?   @db.NVarChar(255)
+  nrodoc           Float?
+  lugar_nacimiento String?   @db.NVarChar(255)
+  fecha_nac        DateTime? @db.DateTime
+  domicilio        String?   @db.NVarChar(255)
+  barrio           String?   @db.NVarChar(255)
+  d                String?   @db.NVarChar(255)
+  a                String?   @db.NVarChar(255)
+  m                String?   @db.NVarChar(255)
+  c                String?   @db.NVarChar(255)
+  reg              Float?
+  fechanac         DateTime? @db.Date
+  telefono         String?   @db.NVarChar(255)
+  id               Float?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model grupos_comunitarios_041124 {
+  ID               Float?
+  NOMBRE           String?   @db.NVarChar(255)
+  APELLIDO         String?   @db.NVarChar(255)
+  SEXO             String?   @db.NVarChar(255)
+  TIPO_DOC         String?   @db.NVarChar(255)
+  NRODOC           Float?
+  LUGAR_NACIMIENTO String?   @db.NVarChar(255)
+  FECHA_NAC        DateTime? @db.DateTime
+  TELEFONO         String?   @db.NVarChar(255)
+  DOMICILIO        String?   @db.NVarChar(255)
+  BARRIO           String?   @db.NVarChar(255)
+  D                String?   @db.NVarChar(255)
+  A                String?   @db.NVarChar(255)
+  M                String?   @db.NVarChar(255)
+  C                String?   @db.NVarChar(255)
+  REG              Float?
+  FECHANAC         DateTime? @db.Date
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model GRUPOS_COMUNITARIOS_NO_USAR {
+  ID               Float?
+  NOMBRE           String?   @db.NVarChar(255)
+  APELLIDO         String?   @db.NVarChar(255)
+  SEXO             String?   @db.NVarChar(255)
+  TIPO_DOC         String?   @db.NVarChar(255)
+  NRODOC           Float?
+  LUGAR_NACIMIENTO String?   @db.NVarChar(255)
+  FECHA_NAC        DateTime? @db.DateTime
+  TELEFONO         String?   @db.NVarChar(255)
+  DOMICILIO        String?   @db.NVarChar(255)
+  BARRIO           String?   @db.NVarChar(255)
+  D                String?   @db.NVarChar(255)
+  A                String?   @db.NVarChar(255)
+  M                String?   @db.NVarChar(255)
+  C                String?   @db.NVarChar(255)
+  REG              Float?
+
+  @@map("GRUPOS_COMUNITARIOS_NO USAR")
+  @@ignore
+}
+
+model Hogar {
+  idHogar                 Int                       @id @default(autoincrement())
+  thogar                  Int                       @default(1, map: "DF_Hogar_thogar")
+  IDCATEGORIA             Int?
+  resolucion              String?                   @db.VarChar(100)
+  fechaalta               DateTime?
+  fechabaja               DateTime?
+  nroTitular              Int?
+  IDRUB                   Int?                      @default(113308, map: "DF_Hogar_IDRUB")
+  OBSERVACION             String?                   @db.VarChar(1000)
+  incluido                Boolean                   @default(false, map: "DF_Hogar_incluido")
+  iddomicilio             Int?
+  usuario                 String?                   @default("suser_sname()", map: "DF_Hogar_usuario") @db.VarChar(50)
+  cartacompromiso         DateTime?                 @db.DateTime
+  idresolusion            Int?
+  fechaMod                DateTime?                 @db.DateTime
+  UsuarioMod              String?                   @db.NVarChar(50)
+  NombreGrupo             String                    @db.VarChar(300)
+  nroregistro             Int?
+  montoOrdinario          Decimal?                  @db.Decimal(10, 2)
+  montoServicio           Decimal?                  @db.Decimal(10, 2)
+  idestadoGrupo           Int                       @default(1, map: "DF_Hogar_idestadoGrupo")
+  EstadosGrupos           EstadosGrupos             @relation(fields: [idestadoGrupo], references: [idestadoGrupo], onUpdate: NoAction, map: "FK_Hogar_EstadosGrupos")
+  HogarOrganizacionGrupo  HogarOrganizacionGrupo[]
+  HogarResponsablesGrupos HogarResponsablesGrupos[]
+  Ingestas_Hogar          Ingestas_Hogar[]
+  PersonasRaciones        PersonasRaciones[]
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Hogar_domicilios {
+  iddomicilio   Int
+  idhogar       Int
+  observaciones String? @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Hogar_telefonos {
+  idhogar       Int
+  idtelefono    Int
+  observaciones String?   @db.VarChar(100)
+  activo        Boolean   @default(true, map: "DF_Hogar_telefonos_activo")
+  alta          DateTime? @default(now(), map: "DF_Hogar_telefonos_alta") @db.DateTime
+  usuario       String?   @default("suser_sname()", map: "DF_Hogar_telefonos_usuario_alta") @db.VarChar(50)
+
+  @@index([idhogar], map: "IX_Hogar_telefonos", clustered: true)
+  @@index([idtelefono], map: "IX_Hogar_telefonos_1")
+  @@ignore
+}
+
+model HogarGrupo {
+  idHogarGrupo      Int                 @id(map: "PK_HogarGrupo_1") @default(autoincrement())
+  idHogar           Int
+  fechaAlta         DateTime            @default(now(), map: "DF_HogarGrupo_fechaAlta") @db.DateTime
+  domicilio         String?             @db.VarChar(250)
+  idvilla           Int?
+  idbarrionooficial Int?
+  idbarrio          Int?
+  fechaBaja         DateTime?           @db.DateTime
+  IntegrantesGrupos IntegrantesGrupos[]
+
+  @@index([idHogarGrupo], map: "IX_HogarGrupo")
+}
+
+model HogarOrganizacionGrupo {
+  idHogar                 Int
+  numeroentidad           Int
+  EntidadesOrganizaciones EntidadesOrganizaciones @relation(fields: [numeroentidad], references: [numeroentidad], onUpdate: NoAction, map: "FK_HogarOrganizacionGrupo_EntidadesOrganizaciones")
+  Hogar                   Hogar                   @relation(fields: [idHogar], references: [idHogar], onUpdate: NoAction, map: "FK_HogarOrganizacionGrupo_Hogar")
+
+  @@id([idHogar, numeroentidad], map: "PK_HogarOrganizacionGrupo")
+}
+
+model HogarResponsablesGrupos {
+  idHogar            Int
+  idresponsable      Int
+  Hogar              Hogar              @relation(fields: [idHogar], references: [idHogar], onUpdate: NoAction, map: "FK_HogarResponsablesGrupos_Hogar")
+  ResponsablesGrupos ResponsablesGrupos @relation(fields: [idresponsable], references: [idresponsable], onUpdate: NoAction, map: "FK_HogarResponsablesGrupos_ResponsablesGrupos")
+
+  @@id([idHogar, idresponsable], map: "PK_HogarResponsablesGrupos")
+}
+
+model Ingestas {
+  idIngesta      Int              @id(map: "PK_Ingestas") @default(autoincrement())
+  descripcion    String           @db.VarChar(50)
+  Ingestas_Hogar Ingestas_Hogar[]
+}
+
+model Ingestas_Hogar {
+  idIngesta Int
+  idHogar   Int
+  Hogar     Hogar    @relation(fields: [idHogar], references: [idHogar], onUpdate: NoAction, map: "FK_Ingestas_Hogar_Hogar")
+  Ingestas  Ingestas @relation(fields: [idIngesta], references: [idIngesta], onUpdate: NoAction, map: "FK_Ingestas_Hogar_Ingestas")
+
+  @@id([idIngesta, idHogar], map: "PK_Ingestas_Hogar")
+}
+
+model IngestasRetiros {
+  IdPersonaHogar Int
+  idIngesta      Int
+  fecha          DateTime @db.DateTime
+
+  @@id([IdPersonaHogar, idIngesta, fecha], map: "PK_IngestasRetiros")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model INTEGRANTES_GC {
+  N__de_orden          Float?    @map("Nº de orden")
+  Nombre               String?   @db.NVarChar(255)
+  Apellido             String?   @db.NVarChar(255)
+  Sexo                 String?   @db.NVarChar(255)
+  Tipo_de_Doc          String?   @map("Tipo de Doc") @db.NVarChar(255)
+  N__de_documento      Float?    @map("Nº de documento")
+  Lugar_de_Nacimiento  String?   @map("Lugar de Nacimiento") @db.NVarChar(255)
+  FechadeNacimiento    DateTime? @db.Date
+  Telefono_de_contacto String?   @map("Telefono de contacto") @db.NVarChar(255)
+  Domicilio            String?   @db.NVarChar(255)
+  Barrio               String?   @db.NVarChar(255)
+  D                    String?   @db.NVarChar(255)
+  A                    String?   @db.NVarChar(255)
+  M                    String?   @db.NVarChar(255)
+  C                    String?   @db.NVarChar(255)
+  N__Registro          Float?    @map("N° Registro")
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model INTEGRANTES_GC_2 {
+  N__de_orden_        Float?    @map("Nº de orden ")
+  Nombre              String?   @db.NVarChar(255)
+  Apellido            String?   @db.NVarChar(255)
+  Sexo                String?   @db.NVarChar(255)
+  Tipo_de_Doc         String?   @map("Tipo de Doc") @db.NVarChar(255)
+  N__de_documento     Float?    @map("Nº de documento")
+  Lugar_de_Nacimiento String?   @map("Lugar de Nacimiento") @db.NVarChar(255)
+  FechadeNacimiento   DateTime? @db.DateTime
+  Telefonodecontacto  String?   @db.NVarChar(255)
+  Domicilio           String?   @db.NVarChar(255)
+  Barrio              String?   @db.NVarChar(255)
+  D                   String?   @db.NVarChar(255)
+  A                   String?   @db.NVarChar(255)
+  M                   String?   @db.NVarChar(255)
+  C                   String?   @db.NVarChar(255)
+  N__Registro         Float?    @map("N° Registro")
+
+  @@ignore
+}
+
+model integrantesdelcambio {
+  idcambiotitular  Int
+  idpersonahogar   Int
+  idtipodefamiliar Int
+  nrosec           Int
+
+  @@id([idcambiotitular, idpersonahogar], map: "PK_integrantesdelcambio")
+}
+
+model integrantesdelcambioanterior {
+  idcambiotitular  Int
+  idpersonahogar   Int
+  idtipodefamiliar Int
+  nrosec           Int
+
+  @@id([idcambiotitular, idpersonahogar], map: "PK_integrantesdelcambioanterior")
+}
+
+model IntegrantesGrupos {
+  idIntegranteGrupo Int        @id(map: "PK_IntegrantesGrupos") @default(autoincrement())
+  idHogarGrupo      Int
+  fechaAlta         DateTime   @default(now(), map: "DF_IntegrantesGrupos_fechaAlta") @db.DateTime
+  nrosec            Int        @db.TinyInt
+  numpersona        Int
+  apellido          String?    @db.VarChar(50)
+  nombre            String?    @db.VarChar(50)
+  edad              Int?
+  idtipodefamiliar  Int?
+  domicilio         String?    @db.VarChar(250)
+  idvilla           Int?
+  idbarrionooficial Int?
+  idbarrio          Int?
+  Observaciones     String?    @db.VarChar(950)
+  fechaBaja         DateTime?  @db.DateTime
+  HogarGrupo        HogarGrupo @relation(fields: [idHogarGrupo], references: [idHogarGrupo], onUpdate: NoAction, map: "FK_IntegrantesGrupos_HogarGrupo")
+
+  @@index([idHogarGrupo], map: "IX_IntegrantesGrupos")
+}
+
+model LicHogar {
+  IDLIQUIDACION      Int
+  IdHogar            Int
+  fecha              DateTime  @default(now(), map: "DF_LicHogar_fecha") @db.DateTime
+  IDCATEGORIA        Int
+  NUMEROCALIFICACION Int?
+  MONTO              Decimal?  @db.Decimal(10, 2)
+  RETRO              Decimal?  @db.Decimal(10, 2)
+  AMPARO             Decimal?  @db.Decimal(10, 2)
+  CARTA              DateTime? @db.DateTime
+  fechadecobro       DateTime? @db.DateTime
+  IdCuenta           Int?
+  tmonto             Int?      @db.TinyInt
+  cbu                String?   @db.VarChar(50)
+  NumeroDeCuenta     String?   @db.VarChar(16)
+
+  @@id([IDLIQUIDACION, IdHogar], map: "PK_LicHogar_1")
+}
+
+model LicPerHogar {
+  IdPersonaHogar Int
+  IDLIQUIDACION  Int
+  numpersona     Int
+  MONTO          Float? @db.Money
+  idhogar        Int
+  nrosec         Int
+
+  @@id([IdPersonaHogar, IDLIQUIDACION, idhogar], map: "PK_LicPerHogar_1")
+}
+
+model LIQUIDACIONES {
+  IDLIQUIDACION      Int       @default(autoincrement())
+  LETRA              String    @db.Char(1)
+  idtliquidacion     Int
+  MESLIQUIDACION     DateTime  @default(dbgenerated("datepart(month,getdate())"), map: "DF_LIQUIDACIONES_MESLIQUIDACION") @db.DateTime
+  FECHALIQUIDACION   DateTime  @default(now(), map: "DF_LIQUIDACIONESDEHABERES_FECHALIQUIDACION") @db.DateTime
+  LIQUIDACIONCERRADA DateTime? @db.DateTime
+  Anulada            Boolean   @default(false, map: "DF_LIQUIDACIONES_Anulada")
+
+  @@id([IDLIQUIDACION, LETRA], map: "PK_LIQUIDACIONES")
+}
+
+model Listados {
+  numpersona        Int       @id(map: "PK_Listados")
+  NOMBRE            String?   @db.VarChar(50)
+  APELLIDO          String?   @db.VarChar(70)
+  SEXO              Int
+  IDTIPODOCUMENTO   Int
+  Nrodocumento      Decimal?  @db.Decimal(11, 0)
+  fechadenacimiento DateTime? @db.DateTime
+  telefono          String?   @db.VarChar(13)
+  domicilio         String?   @db.VarChar(250)
+  nro_registro      Float?    @map("nro registro")
+  idvilla           Int?
+  idbarrionooficial Int?
+  idbarrio          Int?
+
+  @@index([Nrodocumento], map: "IX_Listados")
+  @@index([nro_registro], map: "IX_Listados_1")
+  @@index([idvilla], map: "IX_Listados_2")
+  @@index([idbarrionooficial], map: "IX_Listados_3")
+  @@index([idbarrio], map: "IX_Listados_4")
+}
+
+model localidades {
+  idlocalidad Int      @id(map: "PK_localidades") @default(autoincrement())
+  codigo      Int?     @db.SmallInt
+  localidad   String   @db.Char(50)
+  idprovincia Int      @db.SmallInt
+  cercania    Boolean?
+  idPartido   Int      @db.SmallInt
+
+  @@index([idprovincia], map: "ix_idprovincia_NC")
+  @@index([idPartido], map: "IX_localidades")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model MOD_ANEXO_RES_2SUBSIDIO_GC_Completo {
+  nro_orden         Float?
+  Grupo_comunitario String?  @db.NVarChar(255)
+  nro_registro      Float?
+  Nombre            String?  @db.NVarChar(255)
+  Apellido          String?  @db.NVarChar(255)
+  nro_doc           Float?
+  Monto_lote1       Float?
+  Monto_lote2       Float?
+  Monto_total       Float?
+  Expediente        String?  @db.NVarChar(255)
+  anioRib           Decimal? @db.Decimal(18, 0)
+  nrorib            Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+model Motivo_renovacion {
+  idmotivorenovacion Int    @id(map: "PK_Motivo_renovacion") @default(autoincrement())
+  descripcion        String @db.VarChar(200)
+}
+
+model MotivoReclamo {
+  idmreclamo  Int       @id(map: "PK_MotivoReclamo") @default(autoincrement())
+  descripcion String    @db.VarChar(150)
+  activo      DateTime? @db.DateTime
+}
+
+model motivos_rechazos {
+  idMotivo    Int    @default(autoincrement()) @db.TinyInt
+  descripcion String @db.VarChar(30)
+  idTarjeta   Int
+
+  @@id([idMotivo, idTarjeta], map: "PK_motivos_rechazos")
+}
+
+model Nacionalidades {
+  idnacionalidad Int     @id(map: "PK_Nacionalidades") @default(autoincrement()) @db.TinyInt
+  descripcion    String  @db.Char(30)
+  pais           String? @db.VarChar(50)
+}
+
+model nros_titular {
+  id_nro_titular Int      @id(clustered: false, map: "PK_nros_titular")
+  fecha          DateTime @db.DateTime
+  origen         Int      @default(1, map: "DF_nros_titular_origen") @db.TinyInt
+  idhogar        Int
+
+  @@index([idhogar], map: "IX_nros_titular", clustered: true)
+}
+
+model NrosRub {
+  IdRub   Int       @id(map: "PK_NrosRub") @default(autoincrement())
+  nro_rub String?   @db.VarChar(15)
+  idhogar Int?
+  fecha   DateTime? @default(now(), map: "DF_NrosRub_fecha") @db.DateTime
+}
+
+model Numerador {
+  ultimo_numero Int @id(map: "PK_Numerador")
+}
+
+model numero_rib {
+  numpersona Int
+  numeroRib  Decimal  @db.Decimal(18, 0)
+  anioRib    Decimal  @db.Decimal(18, 0)
+  fecha      DateTime @default(now(), map: "DF_numero_rib_fecha") @db.DateTime
+
+  @@id([numeroRib, anioRib], map: "PK_numero_rib")
+}
+
+model Observaciones {
+  IDOBSERVACION Int       @id(map: "PK_Observaciones") @default(autoincrement())
+  descripcion   String    @db.VarChar(80)
+  codigo        String?   @db.VarChar(4)
+  FechaVigencia DateTime? @db.DateTime
+  IDCATEGORIA   Int?      @default(2, map: "DF_Observaciones_IDCATEGORIA")
+  idoficina     Int?
+  idnivel       Int?
+  resolucion    String?   @db.VarChar(100)
+  numeroentidad Int?
+  tipo          Int?      @db.TinyInt
+}
+
+model observacionesdelhogar {
+  idobservahogar        Int       @id(map: "PK_observacionesdelhogar") @default(autoincrement())
+  idpersonahogar        Int
+  idobservacion         Int
+  alta                  DateTime  @default(now(), map: "DF_observacionesdelhogar_alta") @db.DateTime
+  usuario_alta          String?   @default("suser_sname()", map: "DF_observacionesdelhogar_usuario_alta") @db.NVarChar(128)
+  actualizacion         DateTime? @db.DateTime
+  usuario_actualizacion String?   @db.VarChar(128)
+  FechaVigencia         DateTime? @db.DateTime
+  ObservacionTexto      String?   @db.VarChar(254)
+  FechaGeneracion       DateTime? @default(now(), map: "DF_observacionesdelhogar_FechaGeneracion") @db.DateTime
+
+  @@index([idpersonahogar], map: "IX_observaciones_titular")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model observacionesdelHogar_aud {
+  idobservahogar        Int
+  idpersonahogar        Int
+  idobservacion         Int
+  alta                  DateTime  @db.DateTime
+  usuario_alta          String    @db.VarChar(128)
+  actualizacion         DateTime? @db.DateTime
+  usuario_actualizacion String?   @db.VarChar(128)
+  FechaVigencia         DateTime? @db.DateTime
+  ObservacionTexto      String?   @db.VarChar(254)
+  FechaGeneracion       DateTime? @db.DateTime
+  usuario               String?   @db.VarChar(128)
+  FechaElim             DateTime? @db.DateTime
+
+  @@ignore
+}
+
+model Ocupaciones {
+  idocupacion Int    @id(map: "PK_Ocupaciones") @default(autoincrement())
+  descripcion String @db.VarChar(50)
+}
+
+model Oficinas {
+  NUMEROOFICINA Int     @id(map: "PK_Oficinas") @default(autoincrement())
+  Descripcion   String  @db.VarChar(60)
+  Abreviatura   String? @db.VarChar(30)
+  Sistema       Boolean
+  numeroentidad Int
+}
+
+model Partido {
+  idPartido   Int     @id(map: "PK_Partido") @db.SmallInt
+  idprovincia Int?    @db.SmallInt
+  descripcion String? @db.VarChar(50)
+
+  @@index([idprovincia], map: "ix_idprovincia_NC")
+}
+
+model Personas {
+  NUMPERSONA          Int       @id(map: "PK_Personas") @default(autoincrement())
+  IDTIPODOCUMENTO     Int?      @db.TinyInt
+  CUIL                Decimal?  @db.Decimal(11, 0)
+  NOMBRE              String?   @db.VarChar(50)
+  APELLIDO            String?   @db.VarChar(70)
+  NRO_DOC             Decimal?  @db.Decimal(11, 0)
+  EMAIL               String?   @db.VarChar(80)
+  FECHAALTA           DateTime? @default(now(), map: "DF_PERSONA_FECHAALTA") @db.DateTime
+  SEXO                Int?      @db.TinyInt
+  FECHA_DE_NACIMIENTO DateTime? @db.DateTime
+  pathfoto            String?   @default("\\\\casla\\fotos\\beneficiarios\\silueta.jpg", map: "DF_Personas_pathfoto") @db.VarChar(100)
+  TELEFONO            String?   @db.VarChar(13)
+  telefonomovil       String?   @db.VarChar(20)
+  estadocivil         String?   @db.VarChar(15)
+  idtitular           Int?
+  vive                Boolean   @default(true, map: "DF_Personas_vive")
+  fechaMod            DateTime? @db.DateTime
+  usuarioMod          String?   @db.NVarChar(50)
+  numeroRib           Decimal?  @db.Decimal(18, 0)
+  anioRib             Decimal?  @db.Decimal(18, 0)
+  domicilio           String?   @db.VarChar(250)
+  idbarrio            Int?
+  idbarrionooficial   Int?
+  idvilla             Int?
+  idlocalidad         Int?
+
+  @@index([IDTIPODOCUMENTO, NRO_DOC], map: "ix_docu")
+  @@index([NUMPERSONA, NRO_DOC], map: "IX_Personas")
+  @@index([NRO_DOC], map: "IX_Personas_1")
+  @@index([idtitular], map: "IX_Personas_2")
+  @@index([APELLIDO, NOMBRE], map: "IX_Personas_4")
+  @@index([APELLIDO, NRO_DOC], map: "IX_Personas_5")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Personas_aud {
+  NUMPERSONA          Int
+  IDTIPODOCUMENTO     Int?      @db.TinyInt
+  CUIL                Decimal?  @db.Decimal(11, 0)
+  NOMBRE              String?   @db.VarChar(50)
+  APELLIDO            String?   @db.VarChar(70)
+  NRO_DOC             Decimal?  @db.Decimal(11, 0)
+  EMAIL               String?   @db.VarChar(80)
+  FECHAALTA           DateTime? @db.DateTime
+  SEXO                Int?      @db.TinyInt
+  FECHA_DE_NACIMIENTO DateTime? @db.DateTime
+  pathfoto            String?   @db.VarChar(100)
+  TELEFONO            String?   @db.VarChar(13)
+  telefonomovil       String?   @db.VarChar(20)
+  estadocivil         String?   @db.VarChar(15)
+  idtitular           Int?
+  vive                Boolean
+  fechaMod            DateTime? @db.DateTime
+  usuarioMod          String?   @db.NVarChar(50)
+  usuario             String?   @db.VarChar(150)
+  fechaba             DateTime? @db.DateTime
+
+  @@ignore
+}
+
+model Personas_no_Nacionalizadas {
+  numpersona          Int       @id(map: "PK_Extranjeros")
+  tdocextranjero      Int?      @db.TinyInt
+  numero              Int?
+  Nro_Expediente      String?   @db.VarChar(14)
+  idnacionalidad      Int?      @db.TinyInt
+  NACIONALIDAD        String?   @db.VarChar(50)
+  FECHAVENCIMIENTO    DateTime? @db.DateTime
+  NUMEROTRAMITE       String?   @db.VarChar(20)
+  NUMEROPRECARIA      String?   @db.VarChar(20)
+  nrotitular          Int?
+  FECHAVENCIMIENTODNI DateTime? @db.DateTime
+}
+
+model PersonasdelHogar {
+  IdPersonaHogar         Int       @id(map: "PK_IntegranteDeHogar") @default(autoincrement())
+  NUMPERSONA             Int?
+  idhogar                Int
+  fechaalta              DateTime  @default(now(), map: "DF_PersonasdelHogar_fechaalta") @db.DateTime
+  idtipodefamiliar       Int?      @default(0, map: "DF_PersonasdelHogar_idtipodefamiliar")
+  fechabaja              DateTime? @db.DateTime
+  EDAD_PAGO              Int?
+  Observaciones          String?   @db.VarChar(1000)
+  nrosec                 Int?
+  DUPLICADO              Boolean   @default(false, map: "DF_PersonasdelHogar_REPETIDO")
+  fechalevantarduplicado DateTime? @db.DateTime
+  idocupacion            Int?      @default(0, map: "DF_PersonasdelHogar_idocupacion")
+  usuario                String?   @default("suser_sname()", map: "DF_PersonasdelHogar_usuario") @db.VarChar(50)
+  fechaMod               DateTime? @db.DateTime
+  usuarioMod             String?   @db.NVarChar(50)
+
+  @@index([NUMPERSONA], map: "IX_PersonasdelHogar")
+  @@index([EDAD_PAGO], map: "IX_PersonasdelHogar_1")
+  @@index([fechabaja], map: "IX_PersonasdelHogar_3")
+  @@index([idhogar], map: "IX_PersonasdelHogar_4")
+}
+
+model personasIngestas {
+  IdPersonaHogar Int
+  NUMPERSONA     Int
+  idIngesta      Int
+
+  @@id([IdPersonaHogar, NUMPERSONA, idIngesta], map: "PK_personasIngestas")
+}
+
+model PersonasRaciones {
+  idPersonaRacion  Int       @id(map: "PK__Personas__3E2A2FB8D2C45CC5") @default(autoincrement())
+  fechaRegistro    DateTime  @default(now(), map: "DF__PersonasR__fecha__4C564A9F") @db.DateTime
+  IDTIPODOCUMENTO  Int       @db.TinyInt
+  nroDocumento     String    @db.VarChar(20)
+  nombre           String    @db.VarChar(100)
+  apellido         String    @db.VarChar(100)
+  sexo             String    @db.Char(1)
+  fechaNacimiento  DateTime  @db.Date
+  lugarResidencia  String    @db.VarChar(50)
+  cantidadRaciones Int
+  IDHogar          Int?
+  observaciones    String?   @db.NVarChar(255)
+  FechaRetiro      DateTime? @db.Date
+  Hogar            Hogar?    @relation(fields: [IDHogar], references: [idHogar], onDelete: NoAction, onUpdate: NoAction, map: "FK_PersonasRaciones_Hogar")
+}
+
+model Provincias {
+  idprovincia Int    @id(map: "PK_Provincias") @db.SmallInt
+  nombre      String @db.VarChar(50)
+}
+
+model Reclamos {
+  idreclamo      Int       @id(map: "PK_Reclamos") @default(autoincrement())
+  idMReclamo     Int?
+  Pregunta       String?   @db.VarChar(200)
+  Respuesta      String?   @db.VarChar(200)
+  IdCuenta       Int
+  fechareclamo   DateTime  @default(now(), map: "DF_Reclamos_fechareclamo") @db.DateTime
+  fecharespuesta DateTime? @db.DateTime
+  usuario        String?   @default("suser_sname()", map: "DF_Reclamos_usuario") @db.NVarChar(50)
+  fecha          DateTime? @default(now(), map: "DF_Reclamos_fecha") @db.DateTime
+}
+
+model Renovacion_tarjeta {
+  idrenovacion             Int       @id(map: "PK_Renovacion_tarjeta") @default(autoincrement())
+  idmotivorenovacion       Int
+  IDTARJETA                Int
+  Habilitada               DateTime? @db.DateTime
+  Solicitud_banco          DateTime? @db.DateTime
+  recepcion_banco          DateTime? @db.DateTime
+  entrega_banco            DateTime? @db.DateTime
+  alta                     DateTime  @default(now(), map: "DF_Renovacion_tarjeta_alta") @db.DateTime
+  rechazo_no_renovacion    DateTime? @db.DateTime
+  id_rechazo_no_renovacion Int?
+  idestadorenovacion       Int?      @default(0, map: "DF_Renovacion_tarjeta_Estado")
+  nrotarjetanew            Int?
+  NumeroDeCuentanew        String?   @db.VarChar(15)
+}
+
+model Resolusion {
+  idresolusion Int       @id(map: "PK_Resolucion") @default(autoincrement())
+  descripcion  String    @db.VarChar(100)
+  Vigencia     DateTime? @db.DateTime
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model resolusion_aud {
+  idhogar      Int
+  idresolusion Int?
+  fecha        DateTime @db.DateTime
+  usuario      String   @db.VarChar(100)
+
+  @@index([idhogar], map: "IX_resolusion_aud", clustered: true)
+  @@ignore
+}
+
+model ResponsablesGrupos {
+  idresponsable           Int                       @id(map: "PK_ResponsablesGrupos")
+  numpersona              Int?
+  apellido                String?                   @db.VarChar(20)
+  nombre                  String?                   @db.VarChar(20)
+  NroDoc                  Decimal?                  @db.Decimal(11, 0)
+  telefono                String?                   @db.VarChar(20)
+  direccion               String?                   @db.VarChar(50)
+  idbarrio                Int?
+  idvilla                 Int?
+  idbarrionooficial       Int?
+  HogarResponsablesGrupos HogarResponsablesGrupos[]
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model SubsidioOrdinario2025 {
+  N__Orden          Float?  @map("N° Orden")
+  NroReg            Float?
+  GRUPO_COMUNITARIO String? @map("GRUPO COMUNITARIO") @db.NVarChar(255)
+  Nombre            String? @db.NVarChar(255)
+  Apellido          String? @db.NVarChar(255)
+  NRO_DOC           Float?
+  MontoOrdinario    Float?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model SubsidioServicios2025 {
+  nro_orden Float?
+  NroReg    Float?
+  Grupo     String? @db.NVarChar(255)
+  Nombre    String? @db.NVarChar(255)
+  Apellido  String? @db.NVarChar(255)
+  NRO_DOC   Float?
+  Ordinario Float?
+  Servicio  Float?
+
+  @@ignore
+}
+
+model sysdiagrams {
+  name         String @db.NVarChar(128)
+  principal_id Int
+  diagram_id   Int    @id(map: "PK__sysdiagr__C2B05B61161CA44F") @default(autoincrement())
+  version      Int?
+  definition   Bytes?
+
+  @@unique([principal_id, name], map: "UK_principal_name")
+}
+
+model tarjetas {
+  idtarjeta           Int       @id(map: "PK_tarjetas") @default(autoincrement())
+  nrotarjeta          String?   @db.VarChar(16)
+  clave               String?   @db.VarChar(10)
+  fechasolicitud      DateTime? @db.DateTime
+  fechaAlta           DateTime? @db.DateTime
+  FechaEntrega        DateTime? @db.DateTime
+  Habilitada          Boolean   @default(false, map: "DF_tarjetas_Habilitada")
+  fecharetiro         DateTime? @db.DateTime
+  idcuenta            Int?
+  fechahabilitacion   DateTime? @db.DateTime
+  fechainhabilitacion DateTime? @db.DateTime
+}
+
+model TDomicilios {
+  IdTDomicilio Int    @id(map: "PK_TDomicilios") @default(autoincrement())
+  descripcion  String @db.VarChar(20)
+}
+
+model Telefonos {
+  IdTelefono Int     @id(map: "PK_Telefonos") @default(autoincrement())
+  telefono   String? @db.VarChar(25)
+}
+
+model TEntidades {
+  IdTEntidad  Int    @id(map: "PK_TEntidades")
+  Descripcion String @db.VarChar(50)
+}
+
+model Thogar {
+  thogar      Int    @id(map: "PK_Thogar") @default(autoincrement())
+  descripcion String @db.VarChar(50)
+  abreviatura String @db.VarChar(15)
+}
+
+model TipoCuenta {
+  idtipo      Int    @id(map: "PK_TipoCuenta") @default(autoincrement())
+  descripcion String @db.VarChar(100)
+}
+
+model tipos_documentos {
+  IDTIPODOCUMENTO Int     @id(map: "PK_TIPO_DOCUMENTO") @default(autoincrement()) @db.TinyInt
+  DESCRIPCION     String? @db.VarChar(60)
+  abreviatura     String? @db.VarChar(20)
+  grupo           Int?    @db.TinyInt
+  IDNACIONALIDAD  Int?
+}
+
+model TiposDeFamiliar {
+  IdTipoDeFamiliar Int       @id(map: "PK_TiposDeFamiliar")
+  Nombre           String    @db.VarChar(50)
+  Grupo            Int       @default(2, map: "DF_TiposDeFamiliar_Grupo") @db.TinyInt
+  Tutela           Boolean?
+  Vigencia         DateTime? @db.DateTime
+}
+
+model Tliquidacion {
+  idtliquidacion Int    @id(map: "PK_Tliquidacion") @default(autoincrement())
+  descripcion    String @db.VarChar(50)
+}
+
+model Tmontos {
+  idTMonto       Int @id(map: "PK_Tmontos") @default(autoincrement())
+  idtliquidacion Int @default(0, map: "DF_Tmontos_idtliquidacion")
+}
+
+model TopesDeMontos {
+  idTopeMonto Int       @id(map: "PK_TopesDeMontos") @default(autoincrement())
+  idTmonto    Int
+  Monto       Decimal   @db.Decimal(10, 2)
+  Vigencia    DateTime? @db.DateTime
+
+  @@index([idTmonto], map: "IX_idtmonto_NC")
+}
+
+model Tutela {
+  idpersonaHogar      Int  @id(map: "PK_Tutela") @unique(map: "IX_Sintutela")
+  idpersonaHogarpadre Int?
+  idpersonaHogarMadre Int?
+
+  @@index([idpersonaHogarpadre], map: "IX_Tutela")
+  @@index([idpersonaHogarMadre], map: "IX_Tutela_1")
+}
+
+model Usuarios {
+  NumeroUsuario Int     @id(map: "PK_Usuarios") @default(autoincrement())
+  Usuario       String  @db.VarChar(50)
+  NUMEROOFICINA Int?
+  nombreusuario String  @db.VarChar(100)
+  clave         String? @default(" ", map: "DF_Usuarios_clave") @db.VarChar(50)
+  Activo        Boolean @default(true, map: "DF_Usuarios_Activo")
+
+  @@index([NUMEROOFICINA], map: "IX_numerooficina_NC")
+}
+
+model versionesdesistemas {
+  idsistema   Int    @id(map: "PK_versionesdesistemas") @default(autoincrement())
+  descripcion String @db.VarChar(50)
+  numero      Int
+}
+
+model Villas {
+  idvilla     Int    @id(map: "PK_Villas") @default(autoincrement())
+  idbarrio    Int
+  descripcion String @db.VarChar(100)
+
+  @@index([idbarrio], map: "ix_idbarrio_NC")
+}
