@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -6,7 +7,6 @@ import {
   ChevronRight,
   Users,
   ClipboardList,
-  FileText,
   Settings,
   Building2,
   BarChart3,
@@ -17,7 +17,7 @@ import Link from "next/link";
 interface MenuItemProps {
   title: string;
   href?: string;
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
   children?: React.ReactNode;
 }
 
@@ -37,7 +37,12 @@ const MenuItem = ({ title, href, icon, children }: MenuItemProps) => {
           </span>
           {open ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
         </button>
-        {open && <div className="ml-6 mt-1 space-y-1">{children}</div>}
+
+        {open && (
+          <div className="ml-6 mt-1 space-y-1">
+            {children}
+          </div>
+        )}
       </div>
     );
   }
@@ -47,7 +52,10 @@ const MenuItem = ({ title, href, icon, children }: MenuItemProps) => {
       href={href || "#"}
       className="block text-gray-600 hover:text-indigo-600 px-2 py-1 rounded transition font-medium"
     >
-      {title}
+      <span className="flex items-center space-x-2">
+        {icon}
+        <span>{title}</span>
+      </span>
     </Link>
   );
 };
@@ -60,21 +68,23 @@ export default function Sidebar() {
       </h2>
 
       <nav className="flex-1 overflow-y-auto space-y-2">
+
         {/* Grupos */}
         <MenuItem title="Grupos" icon={<Users size={18} />}>
           <MenuItem title="Grupos (ABM)" href="/grupos" />
+          <MenuItem title="Raciones / Estados" href="/grupos/raciones-estados" />
           <MenuItem title="Retiro de raciones" href="/retiros" />
           <MenuItem title="Rendiciones" href="/rendiciones" />
           <MenuItem title="Pliego de bases y condiciones" href="/pliego" />
         </MenuItem>
-        <div className="h-2"></div> {/* pequeño espacio visual */}
+        <div className="h-2"></div>
 
         {/* Proveedores */}
         <MenuItem title="Proveedores" icon={<Building2 size={18} />}>
           <MenuItem title="Proveedores (ABM)" href="/proveedores" />
           <MenuItem title="Visitas / Supervisión" href="/visitas" />
         </MenuItem>
-        <div className="h-2"></div> {/* pequeño espacio visual */}
+        <div className="h-2"></div>
 
         {/* Administración */}
         <MenuItem title="Administración" icon={<Settings size={18} />}>
@@ -82,18 +92,28 @@ export default function Sidebar() {
           <MenuItem title="Cuentas / Tarjetas" href="/cuentas" />
           <MenuItem title="Suspensiones" href="/suspensiones" />
         </MenuItem>
-        <div className="h-2"></div> {/* pequeño espacio visual */}
+        <div className="h-2"></div>
 
         {/* Separador visual */}
         <div className="mt-4 border-t border-gray-300 my-2"></div>
 
         {/* Consultas */}
-        <MenuItem title="Consultas" icon={<Search size={18} />} href="/consultas" />
-        <div className="h-2"></div> {/* pequeño espacio visual */}
+        <MenuItem
+          title="Consultas"
+          icon={<Search size={18} />}
+          href="/consultas"
+        />
+        <div className="h-2"></div>
 
         {/* Tablero */}
-        <MenuItem title="Tablero" icon={<BarChart3 size={18} />} href="/tablero" />
+        <MenuItem
+          title="Tablero"
+          icon={<BarChart3 size={18} />}
+          href="/tablero"
+        />
+
       </nav>
     </aside>
   );
 }
+
