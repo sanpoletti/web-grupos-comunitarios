@@ -27,7 +27,7 @@ export default function RacionesEstados() {
   const [grupoSeleccionado, setGrupoSeleccionado] = useState<Grupo | null>(null);
   const [estados, setEstados] = useState<Estado[]>([]);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
   // Transformar los campos que vienen del SP a camelCase
   const transformarDatos = (data: any[]): Grupo[] =>
@@ -49,7 +49,7 @@ export default function RacionesEstados() {
 
   const cargarTodos = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/grupos/raciones-estados`);
+      const res = await fetch(`/api/grupos/raciones-estados`);
       if (!res.ok) throw new Error("Error cargando datos");
       const data = await res.json();
       setResultados(transformarDatos(data));
@@ -64,8 +64,8 @@ export default function RacionesEstados() {
 
       const url =
         !isNaN(Number(busqueda))
-          ? `${API_URL}/api/grupos/raciones-estados?nroregistro=${busqueda}`
-          : `${API_URL}/api/grupos/raciones-estados?grupo=${encodeURIComponent(busqueda)}`;
+          ? `/api/grupos/raciones-estados?nroregistro=${busqueda}`
+          : `/api/grupos/raciones-estados?grupo=${encodeURIComponent(busqueda)}`;
 
       const res = await fetch(url);
       if (!res.ok) throw new Error("Error buscando grupos");
@@ -78,7 +78,7 @@ export default function RacionesEstados() {
 
   const cargarEstados = async () => {
   try {
-    const res = await fetch(`${API_URL}/api/grupos/estados`);
+    const res = await fetch(`/api/estados`);
 
     if (!res.ok) {
       throw new Error("Error en endpoint estados");
@@ -97,7 +97,7 @@ export default function RacionesEstados() {
   if (!grupoSeleccionado) return;
 
   try {
-    const res = await fetch(`${API_URL}/api/grupos/raciones-estados`, {
+    const res = await fetch(`/api/grupos/raciones-estados`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

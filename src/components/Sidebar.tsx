@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -6,7 +5,6 @@ import {
   ChevronDown,
   ChevronRight,
   Users,
-  ClipboardList,
   Settings,
   Building2,
   BarChart3,
@@ -19,9 +17,10 @@ interface MenuItemProps {
   href?: string;
   icon?: React.ReactNode;
   children?: React.ReactNode;
+  activo?: boolean;
 }
 
-const MenuItem = ({ title, href, icon, children }: MenuItemProps) => {
+const MenuItem = ({ title, href, icon, children, activo }: MenuItemProps) => {
   const [open, setOpen] = useState(false);
 
   if (children) {
@@ -38,19 +37,19 @@ const MenuItem = ({ title, href, icon, children }: MenuItemProps) => {
           {open ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
         </button>
 
-        {open && (
-          <div className="ml-6 mt-1 space-y-1">
-            {children}
-          </div>
-        )}
+        {open && <div className="ml-6 mt-1 space-y-1">{children}</div>}
       </div>
     );
   }
 
   return (
     <Link
-      href={href || "#"}
-      className="block text-gray-600 hover:text-indigo-600 px-2 py-1 rounded transition font-medium"
+      href={activo === false ? "/en-construccion" : href || "#"}
+      className={`block px-2 py-1 rounded transition font-medium ${
+        activo === false
+          ? "text-gray-400 hover:text-gray-500"
+          : "text-gray-600 hover:text-indigo-600"
+      }`}
     >
       <span className="flex items-center space-x-2">
         {icon}
@@ -71,30 +70,33 @@ export default function Sidebar() {
 
         {/* Grupos */}
         <MenuItem title="Grupos" icon={<Users size={18} />}>
-          <MenuItem title="Grupos (ABM)" href="/grupos" />
+          <MenuItem title="Grupos (ABM)" href="/grupos" activo={false} />
           <MenuItem title="Raciones / Estados" href="/grupos/raciones-estados" />
-          <MenuItem title="Retiro de raciones" href="/retiros" />
-          <MenuItem title="Rendiciones" href="/rendiciones" />
-          <MenuItem title="Pliego de bases y condiciones" href="/pliego" />
+          <MenuItem title="Retiro de raciones" href="/retiros" activo={false} />
+          <MenuItem title="Rendiciones" href="/rendiciones" activo={false} />
+          <MenuItem title="Pliego de bases y condiciones" href="/pliego" activo={false} />
         </MenuItem>
+
         <div className="h-2"></div>
 
         {/* Proveedores */}
         <MenuItem title="Proveedores" icon={<Building2 size={18} />}>
-          <MenuItem title="Proveedores (ABM)" href="/proveedores" />
-          <MenuItem title="Visitas / Supervisión" href="/visitas" />
+          <MenuItem title="Proveedores (ABM)" href="/proveedores" activo={false} />
+          <MenuItem title="Visitas / Supervisión" href="/visitas" activo={false} />
         </MenuItem>
+
         <div className="h-2"></div>
 
         {/* Administración */}
         <MenuItem title="Administración" icon={<Settings size={18} />}>
-          <MenuItem title="Equipos Visita / Supervisión" href="/equipos" />
-          <MenuItem title="Cuentas / Tarjetas" href="/cuentas" />
-          <MenuItem title="Suspensiones" href="/suspensiones" />
+          <MenuItem title="Equipos Visita / Supervisión" href="/equipos" activo={false} />
+          <MenuItem title="Cuentas / Tarjetas" href="/cuentas" activo={false} />
+          <MenuItem title="Suspensiones" href="/suspensiones" activo={false} />
         </MenuItem>
+
         <div className="h-2"></div>
 
-        {/* Separador visual */}
+        {/* Separador */}
         <div className="mt-4 border-t border-gray-300 my-2"></div>
 
         {/* Consultas */}
@@ -102,7 +104,9 @@ export default function Sidebar() {
           title="Consultas"
           icon={<Search size={18} />}
           href="/consultas"
+          activo={false}
         />
+
         <div className="h-2"></div>
 
         {/* Tablero */}
@@ -110,10 +114,10 @@ export default function Sidebar() {
           title="Tablero"
           icon={<BarChart3 size={18} />}
           href="/tablero"
+          activo={false}
         />
 
       </nav>
     </aside>
   );
 }
-
