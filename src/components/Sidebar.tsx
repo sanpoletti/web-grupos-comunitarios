@@ -72,6 +72,7 @@ export default function Sidebar() {
         <MenuItem title="Grupos" icon={<Users size={18} />}>
           <MenuItem title="Grupos (ABM)" href="/grupos" activo={false} />
           <MenuItem title="Raciones / Estados" href="/grupos/raciones-estados" />
+          <MenuItem title="Supervisiones" href="/grupos/supervisiones"  />
           <MenuItem title="Retiro de raciones" href="/retiros" activo={false} />
           <MenuItem title="Rendiciones" href="/rendiciones" activo={false} />
           <MenuItem title="Pliego de bases y condiciones" href="/pliego" activo={false} />

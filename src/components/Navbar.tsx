@@ -6,7 +6,7 @@ export default function Navbar() {
       <h1 className="text-xl font-semibold text-gray-700">
         Grupos Comunitarios
       </h1>
-      <div className="text-gray-500">Usuario: Sandra</div>
+      <div className="text-gray-500">Usuario: Generico</div>
     </header>
   );
 }
