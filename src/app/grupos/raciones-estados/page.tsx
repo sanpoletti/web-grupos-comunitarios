@@ -134,11 +134,17 @@ export default function RacionesEstados() {
     if (!resultados.length) return;
     const encabezados = Object.keys(resultados[0]).join(";");
 
-    const filas = resultados
+  const normalizar = (v: number) => (v === -1 ? "-" : v);
+
+const filas = resultados
   .map((g) =>
     Object.values({
       ...g,
       estado_grupo: obtenerNombreEstado(g.estado_grupo),
+      Desayuno: normalizar(g.Desayuno),
+      Almuerzo: normalizar(g.Almuerzo),
+      Merienda: normalizar(g.Merienda),
+      Cena: normalizar(g.Cena),
     })
       .map((v) => `"${v}"`)
       .join(";")
@@ -208,10 +214,10 @@ export default function RacionesEstados() {
               <td className="p-2">{g.nroRegistro}</td>
               <td className="p-2">{g.grupo}</td>
               <td className="p-2">{obtenerNombreEstado(g.estado_grupo)}</td>
-              <td className="p-2">{g.Desayuno}</td>
-              <td className="p-2">{g.Almuerzo}</td>
-              <td className="p-2">{g.Merienda}</td>
-              <td className="p-2">{g.Cena}</td>
+              <td className="p-2">{g.Desayuno === -1 ? "-" : g.Desayuno}</td>
+              <td className="p-2">{g.Almuerzo === -1 ? "-" : g.Almuerzo}</td>
+              <td className="p-2">{g.Merienda === -1 ? "-" : g.Merienda}</td>
+              <td className="p-2">{g.Cena === -1 ? "-" : g.Cena}</td>
               <td className="p-2 flex gap-3 justify-center">
                 <button
                   onClick={() => abrirModal(g)}
