@@ -144,17 +144,20 @@ export default function SupervisionesPage() {
       setFechaHasta(data.fechas?.fechaFin?.split("T")[0] || "");
 
       // 🔹 CORRECTO: backend devuelve objeto
-      const sup = data.supervision;
+      const sup = data.supervision || null;
       //console.log("SUP COMPLETA:", sup);
       //console.log("ID SUPERVISION:", sup?.idSupervision);
       console.log("FECHAS:", sup?.fechaDesde, sup?.fechaHasta);
 
-      if (sup) {
-        sup.ingestas = data.ingestas || [];
-        sup.verificaciones = data.verificaciones || [];
-      }
+      const supCompleta = sup
+        ? {
+            ...sup,
+            ingestas: data.ingestas || [],
+            verificaciones: data.verificaciones || [],
+          }
+        : null;
 
-      setSupervisionExistente(sup);
+      setSupervisionExistente(supCompleta);
 
       // ==============================
       // 5. Cargar datos básicos
@@ -167,9 +170,9 @@ export default function SupervisionesPage() {
       // ==============================
       // 6. Ingestas con valores
       // ==============================
-      const ingestasFiltradas = data.ingestas.filter(
-          (i: any) => i.idSupervision === sup.idSupervision
-        );
+      const ingestasFiltradas = (data.ingestas || []).filter(
+        (i: any) => i.idSupervision === sup?.idSupervision
+      );
 
       const ingConCant = nuevasIngestas.map((i) => {
         const match = ingestasFiltradas.find(
@@ -186,9 +189,9 @@ export default function SupervisionesPage() {
       // ==============================
       // 7. Checklist (CLAVE)
       // ==============================
-      const veriFiltradas = data.verificaciones.filter(
-  (v: any) => v.idSupervision === sup.idSupervision
-);
+  const veriFiltradas = (data.verificaciones || []).filter(
+    (v: any) => v.idSupervision === sup?.idSupervision
+  );
 
   const resp = veri.map((v: any) => {
     const match = veriFiltradas.find(
