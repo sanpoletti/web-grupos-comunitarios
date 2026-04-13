@@ -253,10 +253,11 @@ export default function SupervisionesPage() {
       return;
     }
 
-    if (!accion) {
+    if (accion === "") {
       alert("Debe seleccionar una acción");
       return;
     }
+
 
     if (accion === 1) {
       if (!fechaDesde) {
@@ -281,10 +282,10 @@ export default function SupervisionesPage() {
           idHogar: grupoSeleccionado.IDHOGAR,
           observaciones,
           conclusion,
-          idAccion: accion || 0,
+          idAccion: typeof accion === "number" ? accion : null,
           descripcionAccion: "",
-          fechaDesde,
-          fechaHasta,
+          fechaDesde: fechaDesde || null,
+          fechaHasta: fechaHasta || null,
           ingestas: ingestas.map((i) => ({ idingesta: i.idingesta, cantidad: i.cantidad })),
           verificaciones: respuestas,
         }),
@@ -392,64 +393,9 @@ export default function SupervisionesPage() {
               </p>
             )}    
             <div className="space-y-4">
-              <div>
-                <label className="text-sm">Observaciones</label>
-                <textarea
-                  className="border p-2 w-full rounded"
-                  value={observaciones}
-                  onChange={(e) => setObservaciones(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <label className="text-sm">Conclusión</label>
-                <textarea
-                  className="border p-2 w-full rounded"
-                  value={conclusion}
-                  onChange={(e) => setConclusion(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <label className="text-sm">Acción</label>
-                <select
-                  className="border p-2 w-full rounded"
-                  value={accion}
-                  onChange={(e) => setAccion(Number(e.target.value))}
-                >
-                  <option value="">Seleccione</option>
-                  <option value={1}>Suspender</option>
-                  <option value={2}>Volver a supervisar</option>
-                </select>
-              </div>
-
-              {accion === 1 && (
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="text-sm">Fecha desde</label>
-                    <input
-                      type="date"
-                      className="border p-2 w-full rounded"
-                      value={fechaDesde}
-                      onChange={(e) => setFechaDesde(e.target.value)}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm">Fecha hasta</label>
-                    <input
-                      type="date"
-                      className="border p-2 w-full rounded"
-                      value={fechaHasta}
-                      onChange={(e) => setFechaHasta(e.target.value)}
-                    />
-                  </div>
-                </div>
-              )}
-
               {/* INGESTAS */}
               <div>
-                <label className="text-sm font-semibold">Ingestas relevadas</label>
+                <label className="text-sm font-semibold">Raciones relevadas</label>
                 <div className="grid grid-cols-2 gap-3 mt-2">
                   {ingestas.map((i) => (
                     <div key={i.idingesta}>
@@ -457,7 +403,7 @@ export default function SupervisionesPage() {
                       <input
                         type="number"
                         className="border p-2 w-full rounded"
-                        value={i.cantidad}
+                        value={i.cantidad ?? 0}
                         onChange={(e) => cambiarCantidad(i.idingesta, Number(e.target.value))}
                       />
                     </div>
@@ -467,7 +413,7 @@ export default function SupervisionesPage() {
 
               {/* CHECKLIST */}
               <div>
-                <label className="text-sm font-semibold">Checklist</label>
+                <label className="text-sm font-semibold">Verificación</label>
                 <table className="w-full mt-2 border">
                   <thead className="bg-gray-200">
                     <tr>
@@ -482,7 +428,9 @@ export default function SupervisionesPage() {
                         <td className="p-2">
                           <select
                             className="border p-1 rounded w-full"
-                            value={respuestas.find((r) => r.idverificacion === v.idverificacion)?.idtverificacion}
+                            value={
+                              respuestas.find((r) => r.idverificacion === v.idverificacion)?.idtverificacion ?? 1
+                            }
                             onChange={(e) => {
                               const value = Number(e.target.value);
                               setRespuestas((prev) =>
@@ -506,6 +454,71 @@ export default function SupervisionesPage() {
                   </tbody>
                 </table>
               </div>
+              <div>
+                <label className="text-sm">Observaciones</label>
+                <textarea
+                  className="border p-2 w-full rounded"
+                  value={observaciones}
+                  onChange={(e) => setObservaciones(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <label className="text-sm">Conclusión</label>
+                <textarea
+                  className="border p-2 w-full rounded"
+                  value={conclusion}
+                  onChange={(e) => setConclusion(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <label className="text-sm">Acción</label>
+                <select
+                  className="border p-2 w-full rounded"
+                  value={accion === "" ? "" : accion}
+                  onChange={(e) =>
+                    setAccion(e.target.value === "" ? "" : Number(e.target.value))
+                  }
+                >
+                  <option value="" disabled hidden>
+                    Seleccione
+                  </option>
+                  <option value={1}>Suspender</option>
+                  <option value={2}>Volver a supervisar</option>
+                </select>
+              </div>
+
+              {accion === 1 && (
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-sm">Fecha desde</label>
+                    <input
+                      type="date"
+                      className="border p-2 w-full rounded"
+                      value={fechaDesde || ""}
+                      required
+                      onChange={(e) =>
+                        setFechaDesde(e.target.value === "" ? "" : e.target.value)
+                      }
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-sm">Fecha hasta</label>
+                    <input
+                      type="date"
+                      className="border p-2 w-full rounded"
+                      value={fechaHasta || ""}
+                      onChange={(e) =>
+                        setFechaHasta(e.target.value === "" ? "" : e.target.value)
+                      }
+                    />
+                  </div>
+                </div>
+              )}
+
+
             </div>
 
             <div className="flex justify-end gap-3 mt-6">
